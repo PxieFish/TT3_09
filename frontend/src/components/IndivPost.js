@@ -18,13 +18,13 @@ const Post = (props) => {
     return (
         <div className={postStyle.container}>
             <div className={postStyle.edit}>
-                <h2 className={postStyle.title}>Post title</h2>
+                <h2 className={postStyle.title}>{props.postTitle}</h2>
             </div>
             <div>
-                <h3>Post content</h3>
+                <h3>{props.postDescription}</h3>
             </div>
             <div className={postStyle.imgContainer}>
-                <img className={postStyle.img} src="https://i.redd.it/in0kdzuienb81.jpg" alt="post"/>
+                <img className={postStyle.img} src={props.postImage} alt="post"/>
             </div>
             <Button onClick={editPost}>Edit Post</Button>
             <Button onClick={deletePost}>Delete Post</Button>

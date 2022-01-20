@@ -1,9 +1,11 @@
 const mysql = require("mysql");
+require("dotenv").config();
+
 
 let connection = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "bobbysql1!",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
     port: 3306,
     database: "socialmedia",
 })
