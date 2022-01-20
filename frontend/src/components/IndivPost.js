@@ -14,6 +14,7 @@ const Post = (props) => {
                 <img className={postStyle.img} src="https://i.redd.it/in0kdzuienb81.jpg" alt="post"/>
             </div>
             <button className={postStyle.button}>Edit Post</button>
+            <button className={postStyle.button}>Delete Post</button>
         </div>
     )
 };

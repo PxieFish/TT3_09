@@ -88,7 +88,6 @@ export default function Dashboard() {
                 <TodoForm addTodo={addTodo} />
             </div>
             <Button onClick={createPost}>Create Post</Button>
-            <Button onClick={editPost}>Edit Post</Button>
 
         </div>
     );
