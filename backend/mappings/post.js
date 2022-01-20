@@ -27,6 +27,17 @@ const getUsers = (request, response) => {
     })
 };
 
+const getUser = (request, response) => {
+    connection.query(`SELECT post.* FROM liked_post as l LEFT JOIN post on l.Post_ID = post.Post_ID WHERE User_ID=${request.query.userId};`, (error, records) => {
+        if (error) {
+            console.log(error);
+            response.status(500).send("Some error occured while executing query")
+        } else {
+            response.status(200).send(records);
+        }
+    })
+};
+
 const insertUsers = (request, response) => {
     connection.query(`INSERT INTO post (Post_Title, Post_Description, Post_image) values 
     ("${request.query.postTitle}","${request.query.postDescription}","${request.query.postImage}");`, 
@@ -82,6 +93,9 @@ const delPost = (request, response) => {
 router.get("/post/insert", insertUsers);
 // get all users [READ]
 router.get("/post/all", getUsers);
+
+// get user's post [READ]
+router.get("/post/user", getUser);
 
 // get 1 post [READ]
 router.get("/post/single", getPost);
