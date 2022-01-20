@@ -5,9 +5,30 @@ const connection = require("../database");
 
 let router = express.Router();
 
+const getPost = (request, response) => {
+    connection.query(`select * from post where Post_ID = ${request.query.postID} ;`, (error, records) => {
+        if (error) {
+            console.log(error);
+            response.status(500).send("Some error occured while executing query")
+        } else {
+            response.status(200).send(records);
+        }
+    })
+};
 
 const getUsers = (request, response) => {
     connection.query("select * from post;", (error, records) => {
+        if (error) {
+            console.log(error);
+            response.status(500).send("Some error occured while executing query")
+        } else {
+            response.status(200).send(records);
+        }
+    })
+};
+
+const getUser = (request, response) => {
+    connection.query(`SELECT post.* FROM liked_post as l LEFT JOIN post on l.Post_ID = post.Post_ID WHERE User_ID=${request.query.userId};`, (error, records) => {
         if (error) {
             console.log(error);
             response.status(500).send("Some error occured while executing query")
@@ -29,8 +50,30 @@ const insertUsers = (request, response) => {
         }
     });
 }
+
+const updatePost = (request, response) => {
+    //var sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'";
+    // need to find a way to get postID and search up post from DB
+    var postID = request.query.postID
+    var postTitle 
+    var postDesc
+    var postImg
+    connection.query(`UPDATE post (Post_Title, Post_Description, Post_image) values 
+    ("${request.query.postTitle}","${request.query.postDescription}","${request.query.postImage}");`, 
+    (error, records) => {
+        if (error) {
+            console.log(error);
+            response.status(500).send("Some error occured while executing query")
+        } else {
+            response.status(200).send(records);
+        }
+    });
+}
+
 /* 
+
 http://localhost:4000/post/insert?postTitle=Jogging&postDescription=Run&postImage=https://preview.redd.it/21ghjyhnjmb81.gif?width=960&format=mp4&s=69ae3f05ee59793703165d1b726159dcc1205f1f
+
 */
 
 const delPost = (request, response) => {
@@ -51,7 +94,14 @@ router.get("/post/insert", insertUsers);
 // get all users [READ]
 router.get("/post/all", getUsers);
 
+// get user's post [READ]
+router.get("/post/user", getUser);
+
+// get 1 post [READ]
+router.get("/post/single", getPost);
+
 // Update a user [UPDATE]
+router.get("/post/update", updatePost);
 
 // Delete a user [DELETE]
 router.get("/post/delete", delPost);
