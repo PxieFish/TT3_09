@@ -52,22 +52,54 @@ const insertUsers = (request, response) => {
 }
 
 const updatePost = (request, response) => {
-    //var sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'";
+    
+    {//var sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'";
     // need to find a way to get postID and search up post from DB
-    var postID = request.query.postID
-    var postTitle 
-    var postDesc
-    var postImg
-    connection.query(`UPDATE post (Post_Title, Post_Description, Post_image) values 
-    ("${request.query.postTitle}","${request.query.postDescription}","${request.query.postImage}");`, 
-    (error, records) => {
-        if (error) {
-            console.log(error);
-            response.status(500).send("Some error occured while executing query")
-        } else {
-            response.status(200).send(records);
-        }
-    });
+    // var postID = request.query.postID
+    // connection.query(`select * from post where Post_ID = ${request.query.postID} ;`, (error, records) => {
+    //     if (error) {
+    //         // if original post cannot be found, cannot be updated
+    //         console.log(error);
+    //         response.status(500).send("original post cannot be found, cannot be updated")
+    //     } else {
+            //response.status(200).send(records);
+            // var string=JSON.stringify(records);
+            // console.log(string);
+            // var json =  JSON.parse(string);
+
+            // // saved variables to display for user to edit
+            // var postID = json[0].Post_ID
+            // var postTitle = json[0].Post_Title 
+            // var postDesc = json[0].Post_Description
+            // var postImg = json[0].Post_image
+
+            //var sql = "UPDATE post set Post_Title = ? , Post_Description = ? , Post_image = ?";
+
+            // var labels = [ "Post_Title", "Post_Description", "Post_image"]
+            // var inputs = 
+            // [`"${request.query.postTitle}","${request.query.postDescription}","${request.query.postImage}"`]
+    }
+            connection.query(
+            `UPDATE post SET 
+            Post_Title = "${request.query.postTitle}", 
+            Post_Description = "${request.query.postDescription} ", 
+            Post_image = "${request.query.postImage}"
+            WHERE Post_ID = ${request.query.postID}`  ,
+            (error, records) => {
+                if (error) {
+                    console.log(error);
+                    response.status(500).send("Some error occured while executing query")
+                } else {
+                    response.status(200).send(records);
+                }
+            });
+
+            //response.status(200).send(records);
+
+
+            
+        // }
+    // });
 }
 
 /* 
