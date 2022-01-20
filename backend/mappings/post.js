@@ -1,10 +1,12 @@
-const express = require("express");
 
+const express = require("express");
 const connection = require("../database");
+
 
 let router = express.Router();
 
-router.get("/post/all", (request, response) => {
+
+const getUsers = (request, response) => {
     connection.query("select * from post;", (error, records) => {
         if (error) {
             console.log(error);
@@ -12,8 +14,10 @@ router.get("/post/all", (request, response) => {
         } else {
             response.status(200).send(records);
         }
-    });
-});
+    })
+};
+
+router.get("/post/all", getUsers);
 
 // router.get("/user/by-user-id", (request, response) => {
 //     if (!request.query.uid) {
@@ -33,4 +37,8 @@ router.get("/post/all", (request, response) => {
 //         });
 //     }
 // });
+
+
+
+
 module.exports = {router};
