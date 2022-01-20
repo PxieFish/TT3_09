@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import CreatePost from './components/CreatePost'
+import EditPost from './components/EditPost'
 import Dashboard from './pages/Dashboard';
 import useToken from './components/App/useToken';
 
@@ -40,6 +41,7 @@ function App() {
                 <Routes>
                     <Route path='/Dashboard' element={<Dashboard />} />
                     <Route path='/createPost' element={<CreatePost/>}/>
+                    <Route path='/editPost' element={<EditPost/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
