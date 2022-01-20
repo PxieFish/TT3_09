@@ -65,9 +65,6 @@ export default function Dashboard() {
     const createPost = () => {
         navigate('/createPost')
     }
-    const editPost = () => {
-        navigate('/editPost')
-    }
 
     return(
 
