@@ -36,17 +36,17 @@ const CreatePost = () => {
 
         if (noError) {
             const data = {
-                "postTitle": postTitle.value,
-                "postDescription": postDescription.value,
-                "postImage": postImage.value,
+                postTitle: postTitle.value,
+                postDescription: postDescription.value,
+                postImage: postImage.value,
             }
 
             //todo - axios post
-            axios.post(apiRoot + `/post/insert/postTitle=${data.postTitle}&postDescription=${data.postDescription}&postImage=${data.postImage}`)
+            axios.get(apiRoot + `/post/insert?postTitle=${data.postTitle}&postDescription=${data.postDescription}&postImage=${data.postImage}`)
                 .then(res => {
                     if (res.status === 200) {
                         alert("Post Created");
-                        navigate('/')
+                        navigate('/Homepage')
                     }
                 })
         }
@@ -82,7 +82,7 @@ const CreatePost = () => {
 					<Form.Text id="imageNote" style={warningStyle}></Form.Text>
 				</Form.Group>
                 <br/>
-                <Button variant="primary" type="submit">Post</Button>
+                <Button type="submit">Post</Button>
             </Form>
         </div>
     )

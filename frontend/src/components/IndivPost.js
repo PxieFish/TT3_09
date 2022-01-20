@@ -18,9 +18,8 @@ function Like() {
 }
 
 const Post = (props) => {
-    
     const deletePost = (postTitle) => {
-        axios.get(apiRoot + `/post/delete/postTitle=${postTitle}`)
+        axios.get(apiRoot + `/post/delete?postTitle=${postTitle}`)
             .then((res) => {
                 if (res.status === 200) {
                     alert("post deleted");
@@ -47,7 +46,7 @@ const Post = (props) => {
                 <img className={postStyle.img} src={props.postImage} alt="post"/>
             </div>
             <Button onClick={editPost}>Edit Post</Button>
-            <Button onClick={deletePost}>Delete Post</Button>
+            <Button onClick={() => deletePost(props.postTitle)}>Delete Post</Button>
             <Like/>
         </div>
     )
