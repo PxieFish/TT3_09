@@ -1,8 +1,13 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import postStyle from '../styles/post.module.css'
+import postStyle from '../styles/post.module.css';
+import axios from 'axios';
+import {apiRoot} from '../config';
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
+
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -31,12 +36,19 @@ const CreatePost = () => {
 
         if (noError) {
             const data = {
-                "title": postTitle.value,
-                "description": postDescription.value,
-                "image": postImage.value,
+                "postTitle": postTitle.value,
+                "postDescription": postDescription.value,
+                "postImage": postImage.value,
             }
 
             //todo - axios post
+            axios.post(apiRoot + `/post/insert/postTitle=${data.postTitle}&postDescription=${data.postDescription}&postImage=${data.postImage}`)
+                .then(res => {
+                    if (res.status === 200) {
+                        alert("Post Created");
+                        navigate('/')
+                    }
+                })
         }
     }
 
