@@ -17,10 +17,10 @@ const getUsers = (request, response) => {
     })
 };
 
-router.get("/post/all", getUsers);
-
-router.get("/post/insert", (request, response) => {
-    connection.query(`INSERT INTO post (Post_Title, Post_Description, Post_image) values ("${request.query.postTitle}","${request.query.postDescription}","${request.query.postImage}");`, (error, records) => {
+const insertUsers = (request, response) => {
+    connection.query(`INSERT INTO post (Post_Title, Post_Description, Post_image) values 
+    ("${request.query.postTitle}","${request.query.postDescription}","${request.query.postImage}");`, 
+    (error, records) => {
         if (error) {
             console.log(error);
             response.status(500).send("Some error occured while executing query")
@@ -28,7 +28,33 @@ router.get("/post/insert", (request, response) => {
             response.status(200).send(records);
         }
     });
-});
+}
+/* 
+http://localhost:4000/post/insert?postTitle=Jogging&postDescription=Run&postImage=https://preview.redd.it/21ghjyhnjmb81.gif?width=960&format=mp4&s=69ae3f05ee59793703165d1b726159dcc1205f1f
+*/
+
+const delPost = (request, response) => {
+    //var sql = request
+    var sql = `DELETE FROM post WHERE Post_Title = "${request.query.postTitle}"`;
+    connection.query(sql, (error, records) => {
+        if (error) {
+            console.log(error);
+            response.status(500).send("Some error occured while executing query")
+        } else {
+            response.status(200).send(records);
+        }
+    })
+};
+
+// Create a user [CREATE]
+router.get("/post/insert", insertUsers);
+// get all users [READ]
+router.get("/post/all", getUsers);
+
+// Update a user [UPDATE]
+
+// Delete a user [DELETE]
+router.get("/post/delete", delPost);
 
 // router.get("/user/by-user-id", (request, response) => {
 //     if (!request.query.uid) {
