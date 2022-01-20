@@ -65,6 +65,9 @@ export default function Dashboard() {
     const createPost = () => {
         navigate('/createPost')
     }
+    const editPost = () => {
+        navigate('/editPost')
+    }
 
     return(
 
@@ -85,6 +88,8 @@ export default function Dashboard() {
                 <TodoForm addTodo={addTodo} />
             </div>
             <Button onClick={createPost}>Create Post</Button>
+            <Button onClick={editPost}>Edit Post</Button>
+
         </div>
     );
 }
