@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './components/Login/login';
-import Dashboard from './components/Dashboard/dashboard';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 import Preferences from './components/Preferences/preferences';
 import useToken from './components/App/useToken';
 
