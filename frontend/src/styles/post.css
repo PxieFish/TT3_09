@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    background-color: green;
+}
+
+.divStyle {
+    padding: 10px;
+}

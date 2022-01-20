@@ -1,4 +1,6 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
+import axios from 'axios';
+import IndivPost from '../components/IndivPost'
 
 function Todo({ todo, index, completeTodo, removeTodo }) {
     return (
@@ -16,7 +18,7 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
 }
 
 function TodoForm({ addTodo }) {
-    const [value, setValue] = React.useState("");
+    const [value, setValue] = useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -38,20 +40,7 @@ function TodoForm({ addTodo }) {
 }
 
 export default function Dashboard() {
-    const [todos, setTodos] = React.useState([
-        {
-            text: "Potatoes",
-            isCompleted: false
-        },
-        {
-            text: "Carrot",
-            isCompleted: false
-        },
-        {
-            text: "Lemon",
-            isCompleted: false
-        }
-    ]);
+    const [todos, setTodos] = useState([]);
 
     const addTodo = text => {
         const newTodos = [...todos, { text }];
@@ -73,6 +62,9 @@ export default function Dashboard() {
     return(
 
         <div className="app">
+            <div>
+                <IndivPost/>
+            </div>
             <div className="todo-list">
                 {todos.map((todo, index) => (
                     <Todo

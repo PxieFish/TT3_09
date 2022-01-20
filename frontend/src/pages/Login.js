@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './styles/login.css';
+import '../styles/login.css';
 import axios from "axios";
 
 async function loginUser(credentials) {
