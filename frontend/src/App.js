@@ -22,13 +22,13 @@ function App() {
 
     const { token, setToken } = useToken();
 
-//    if (!token) {
-//        return <Login setToken={setToken} />
-//    }
+   if (!token) {
+       return <Login setToken={setToken} />
+   }
 
     return (
         <div className='wrapper'>
-            <h1>Social Engagement!</h1>
+            <h1 style='text-align:center'>Social Engagement!</h1>
             <a class='button' href='/Login' onClick={() => localStorage.clear('token')}>Logout</a>
 
             <BrowserRouter>
