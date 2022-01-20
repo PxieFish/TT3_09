@@ -22,6 +22,7 @@ export default function Dashboard() {
     return(
 
         <div className="app">
+            <h1>Dashboard</h1>  
             <div>
                 {posts.map((post) => (
                     <IndivPost id={post.Post_ID} postTitle={post.Post_Title} postDescription={post.Post_Description} postImage={post.Post_Image} />
