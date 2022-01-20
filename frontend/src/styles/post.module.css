@@ -1,0 +1,35 @@
+.container {
+    border-color: black;
+    border: 1px solid black;
+    border-radius: 25px;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.title {
+    text-decoration: underline;
+}
+
+.img {
+    width:200px;
+    height:300px;
+    object-fit:cover;
+}
+
+.imgContainer {
+    display:flex;
+}
+
+.edit {
+    display: flex;
+}
+
+.button {
+    display: flex;
+    margin: 2%;
+}
+
+.divStyle {
+    padding: 10px;
+}
