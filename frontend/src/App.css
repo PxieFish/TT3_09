@@ -2,11 +2,12 @@
   padding: 20px;
   font-family: 'Lucida Handwriting';
   background-color: lightblue;
+  height: 100%;
 }
 
 .app {
   background: lightcyan;
-  height: 100vh;
+  height: 100%;
   padding: 30px;
 }
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import IndivPost from '../components/IndivPost';
 import Button from 'react-bootstrap/Button';
 import {useNavigate} from 'react-router-dom';
+import {apiRoot} from '../config';
 
 function Todo({ todo, index, completeTodo, removeTodo }) {
     return (
@@ -43,6 +44,13 @@ function TodoForm({ addTodo }) {
 
 export default function Dashboard() {
     const [todos, setTodos] = useState([]);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        axios.get(apiRoot + '/post/all').then(res => {
+            setPosts(res.data);
+        })
+    })
 
     const addTodo = text => {
         const newTodos = [...todos, { text }];
@@ -73,19 +81,9 @@ export default function Dashboard() {
 
         <div className="app">
             <div>
-                <IndivPost/>
-            </div>
-            <div className="todo-list">
-                {todos.map((todo, index) => (
-                    <Todo
-                        key={index}
-                        index={index}
-                        todo={todo}
-                        completeTodo={completeTodo}
-                        removeTodo={removeTodo}
-                    />
+                {posts.map((post) => (
+                    <IndivPost id={post.Post_ID} postTitle={post.Post_Title} postDescription={post.Post_Description} postImage={post.Post_Image} />
                 ))}
-                <TodoForm addTodo={addTodo} />
             </div>
             <Button onClick={createPost}>Create Post</Button>
             <Button onClick={editPost}>Edit Post</Button>
