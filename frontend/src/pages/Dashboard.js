@@ -13,7 +13,7 @@ export default function Dashboard() {
             setPosts(res.data);
         })
     })
-    
+
     const navigate = useNavigate();
     const createPost = () => {
         navigate('/createPost')

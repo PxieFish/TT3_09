@@ -5,17 +5,6 @@ import {apiRoot} from '../config';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
-function Like() {
-    const [count, setCount] = useState(0);
-
-    return (
-        <div>
-            <p> {count} likes </p>
-            <Button onClick={() => setCount(count + 1)}>Like</Button>
-        </div>
-    );
-}
-
 export default function Homepage() {
 
     const [posts, setPosts] = useState([]);
@@ -34,17 +23,13 @@ export default function Homepage() {
     return(
 
         <div className="homepage">
-            <h1>Homepage</h1>
+            <h1>Homepage</h1>            
+            <Button onClick={createPost}>Create Post</Button>
             <div>
                 {posts.map((post) => (
-                    <div>
-                        <IndivPost id={post.Post_ID} postTitle={post.Post_Title} postDescription={post.Post_Description} postImage={post.Post_Image} />
-                        <Like/>
-                    </div>
+                    <IndivPost id={post.Post_ID} postTitle={post.Post_Title} postDescription={post.Post_Description} postImage={post.Post_image} />
                 ))}
             </div>
-            <Button onClick={createPost}>Create Post</Button>
-
         </div>
     );
 }

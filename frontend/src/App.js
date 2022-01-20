@@ -6,6 +6,7 @@ import CreatePost from './components/CreatePost'
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
 import useToken from './components/App/useToken';
+import EditPost from './components/EditPost';
 
 function setToken(userToken) {
     localStorage.setItem('token', JSON.stringify(userToken));
@@ -43,6 +44,7 @@ function App() {
                     <Route path='/Homepage' element={<Homepage />} />
                     <Route path='/Dashboard' element={<Dashboard />} />
                     <Route path='/createPost' element={<CreatePost/>}/>
+                    <Route path='/editPost' element={<EditPost/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
