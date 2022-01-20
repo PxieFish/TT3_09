@@ -15,6 +15,17 @@ router.get("/post/all", (request, response) => {
     });
 });
 
+router.get("/post/insert", (request, response) => {
+    connection.query(`INSERT INTO post (Post_Title, Post_Description, Post_image) values ("${request.query.postTitle}","${request.query.postDescription}","${request.query.postImage}");`, (error, records) => {
+        if (error) {
+            console.log(error);
+            response.status(500).send("Some error occured while executing query")
+        } else {
+            response.status(200).send(records);
+        }
+    });
+});
+
 // router.get("/user/by-user-id", (request, response) => {
 //     if (!request.query.uid) {
 //         console.log("Received invalid user_id: " + request.query.userId)
