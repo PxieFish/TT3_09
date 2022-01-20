@@ -8,7 +8,7 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
         >
             {todo.text}
             <div>
-                <button onClick={() => completeTodo(index)}>Complete</button>
+                {/*<button onClick={() => completeTodo(index)}>Complete</button>*/}
                 <button onClick={() => removeTodo(index)}>x</button>
             </div>
         </div>
@@ -74,6 +74,7 @@ export default function Dashboard() {
 
         <div className="app">
             <div className="todo-list">
+                <h1>Homepage</h1>
                 {todos.map((todo, index) => (
                     <Todo
                         key={index}
