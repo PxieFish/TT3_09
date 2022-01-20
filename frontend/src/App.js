@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './components/Login/login';
-import Dashboard from './components/Dashboard/dashboard';
-import Preferences from './components/Preferences/preferences';
+import Login from './pages/Login';
+import CreatePost from './components/CreatePost'
+import Dashboard from './pages/Dashboard';
 import useToken from './components/App/useToken';
 
 function setToken(userToken) {
@@ -20,9 +20,9 @@ function App() {
 
     const { token, setToken } = useToken();
 
-    // if (!token) {
-    //     return <Login setToken={setToken} />
-    // }
+//    if (!token) {
+//        return <Login setToken={setToken} />
+//    }
 
     return (
         <div className='wrapper'>
@@ -34,13 +34,12 @@ function App() {
                 <nav>
                     <ul>
                         <li><a href='/Dashboard'>Dashboard</a></li>
-                        <li><a href='/Preferences'>Preferences</a></li>
                     </ul>
                 </nav>
 
                 <Routes>
                     <Route path='/Dashboard' element={<Dashboard />} />
-                    <Route path='/Preferences' element={<Preferences />} />
+                    <Route path='/createPost' element={<CreatePost/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
