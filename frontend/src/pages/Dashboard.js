@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import IndivPost from '../components/IndivPost'
+import IndivPost from '../components/IndivPost';
+import Button from 'react-bootstrap/Button';
+import {useNavigate} from 'react-router-dom';
 
 function Todo({ todo, index, completeTodo, removeTodo }) {
     return (
@@ -59,6 +61,11 @@ export default function Dashboard() {
         setTodos(newTodos);
     };
 
+    const navigate = useNavigate();
+    const createPost = () => {
+        navigate('/createPost')
+    }
+
     return(
 
         <div className="app">
@@ -77,6 +84,7 @@ export default function Dashboard() {
                 ))}
                 <TodoForm addTodo={addTodo} />
             </div>
+            <Button onClick={createPost}>Create Post</Button>
         </div>
     );
 }

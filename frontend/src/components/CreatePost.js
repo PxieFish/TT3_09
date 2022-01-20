@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import postStyle from '../styles/post.css'
+import postStyle from '../styles/post.module.css'
 
 const CreatePost = () => {
 
@@ -70,7 +70,7 @@ const CreatePost = () => {
 					<Form.Text id="imageNote" style={warningStyle}></Form.Text>
 				</Form.Group>
                 <br/>
-                <Button type="submit">Post</Button>
+                <Button variant="primary" type="submit">Post</Button>
             </Form>
         </div>
     )
