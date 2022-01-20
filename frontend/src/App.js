@@ -28,7 +28,7 @@ function App() {
 
     return (
         <div className='wrapper'>
-            <h1>Application</h1>
+            <h1>Social Engagement!</h1>
             <a class='button' href='/Login' onClick={() => localStorage.clear('token')}>Logout</a>
 
             <BrowserRouter>
